@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="8dp"
+    tools:context=".Activity.Account.AccountMenu.AccountSettings.AccountSettingsActivity">
+
+    <LinearLayout
+        android:id="@+id/llResetPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="8dp"
+            android:src="@drawable/ic_reset_password"
+            app:tint="@color/colorAccent" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="sans-serif"
+            android:gravity="center_vertical"
+            android:paddingLeft="24dp"
+            android:text="Reset password"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llChangeEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="8dp"
+            android:src="@drawable/ic_change_email"
+            app:tint="@color/colorAccent" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="sans-serif"
+            android:gravity="center_vertical"
+            android:paddingLeft="24dp"
+            android:text="Change email"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llDeleteAccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="8dp"
+            android:src="@drawable/ic_trash_80"
+            app:tint="@color/colorAccent" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="sans-serif"
+            android:gravity="center_vertical"
+            android:paddingLeft="24dp"
+            android:text="Delete my account"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Sabo Store</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_store">Categories</string>
+    <string name="menu_cart">Cart</string>
+
+    <string name="home_second">Home Second</string>
+
+    <string name="textCancel">Cancel</string>
+    <string name="textSend">Send</string>
+    <string name="textEmail">Email</string>
+    <string name="textTitleForgotPass">Enter your e-mail address and we\'ll send you a link to reset your password</string>
+    <string name="textSignIn">Sign In</string>
+    <string name="textSubTitleSignIn">Sign in to your Account</string>
+    <string name="textPassword">Password</string>
+    <string name="textForgotPassword">Forgot password?</string>
+    <string name="textDontHaveAccount">Don\'t have an account? Sign Up</string>
+    <string name="textSignUp">Sign Up</string>
+    <string name="textSubTitleSignUp">Create new account</string>
+    <string name="textHaveAccount">Already have an account? Sign In</string>
+    <string name="textUsername">Username</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="test_length_item_name">Z325 Speaker System with subwoofer</string>
+    <string name="menu_sign_out">Sign out</string>
+    <string name="textDeleteAccount">Delete my account</string>
+    <string name="textTitleResetPassword">What would you like your new password to be?</string>
+    <string name="textNewPassword">New Password</string>
+    <string name="textTitleChangeEmail">What would you like your new email to be?</string>
+    <string name="textNewEmail">New Email Address</string>
+    <string name="textDescriptionSpec">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
+    <string name="menu_order_history">Order History</string>
+</resources>

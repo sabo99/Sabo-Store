@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.store.StoreFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Most Popular"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="2dp"
+            android:layout_marginLeft="20dp"
+            android:background="@color/colorPrimaryDark" />
+
+
+        <com.smarteist.autoimageslider.SliderView
+            android:id="@+id/sliderView"
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:layout_marginTop="20dp"
+            app:sliderAnimationDuration="1000"
+            app:sliderAutoCycleDirection="back_and_forth"
+            app:sliderIndicatorAnimationDuration="1000"
+            app:sliderIndicatorGravity="right|bottom"
+            app:sliderIndicatorMargin="15dp"
+            app:sliderIndicatorOrientation="horizontal"
+            app:sliderIndicatorPadding="1dp"
+            app:sliderIndicatorRadius="1.5dp"
+            app:sliderIndicatorSelectedColor="#5A5A5A"
+            app:sliderIndicatorUnselectedColor="#FFF"
+            app:sliderScrollTimeInSec="2" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Mouse"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp" />
+
+        <!-- Mouse Section -->
+        <View
+            android:layout_width="20dp"
+            android:layout_height="2dp"
+            android:layout_marginLeft="20dp"
+            android:background="@color/colorPrimaryDark" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <include layout="@layout/include_mouse_layout" />
+
+        <View
+            android:id="@+id/viewSpace"
+            android:layout_width="match_parent"
+            android:layout_height="800dp"/>
+
+
+        <!-- Keyboard Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Keyboard"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="2dp"
+            android:layout_marginLeft="20dp"
+            android:background="@color/colorPrimaryDark" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <include layout="@layout/include_keyboard_layout" />
+
+
+        <!-- Speaker Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Speaker"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="2dp"
+            android:layout_marginLeft="20dp"
+            android:background="@color/colorPrimaryDark" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+
+        <include layout="@layout/include_speaker_layout"/>
+
+
+        <!-- Headset Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Headset"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="2dp"
+            android:layout_marginLeft="20dp"
+            android:background="@color/colorPrimaryDark" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+
+        <include layout="@layout/include_headset_layout"/>
+
+    </LinearLayout>
+
+
+</androidx.core.widget.NestedScrollView>

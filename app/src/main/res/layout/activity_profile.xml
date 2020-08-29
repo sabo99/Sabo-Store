@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.Account.AccountMenu.Profile.ProfileActivity">
+
+    <RelativeLayout
+        android:id="@+id/rlProf"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp">
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civProfilePhoto"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/no_profile"/>
+
+        <ImageButton
+            android:id="@+id/ibPreviewPhoto"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@drawable/background_circle_photo_appbar"
+            android:clickable="true" />
+
+        <ImageButton
+            android:id="@+id/ibChangePhoto"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="4dp"
+            android:background="@drawable/background_circle_back_arrow"
+            android:clickable="true"
+            android:tint="@color/colorNotificationBar"
+            android:src="@drawable/ic_photograph_80" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rlName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rlProf"
+        android:layout_marginTop="20dp"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:paddingBottom="10dp">
+
+        <ImageView
+            android:id="@+id/logoPerson"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/ic_user_60" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@id/logoPerson"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvProfileName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="60dp"
+                android:text=""
+                android:textColor="@android:color/black"
+                android:textSize="16dp" />
+
+
+        </LinearLayout>
+
+
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp"
+            android:src="@drawable/ic_edit" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/v1"
+        android:layout_width="match_parent"
+        android:layout_height="0.8dp"
+        android:layout_below="@id/rlName"
+        android:layout_marginLeft="75dp"
+        android:background="@color/colorNotificationBar" />
+
+    <RelativeLayout
+        android:id="@+id/rlEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/v1"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:paddingVertical="20dp">
+
+        <ImageView
+            android:id="@+id/logoEmail"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_email_60" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/logoEmail"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvProfileEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="60dp"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="30dp"
+            android:src="@drawable/ic_edit" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/v2"
+        android:layout_width="match_parent"
+        android:layout_height="0.8dp"
+        android:layout_below="@id/rlEmail"
+        android:layout_marginLeft="75dp"
+        android:background="@color/colorNotificationBar" />
+
+    <RelativeLayout
+        android:id="@+id/rlPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/v2"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:paddingVertical="20dp">
+
+        <ImageView
+            android:id="@+id/logoPhone"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_phone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/logoPhone"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvProfilePhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="None"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="30dp"
+            android:src="@drawable/ic_edit" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

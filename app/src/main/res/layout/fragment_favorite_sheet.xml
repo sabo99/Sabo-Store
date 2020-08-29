@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".BottomSheet.FavoriteSheetFragment">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_top_bottom_sheet">
+
+        <View
+            android:layout_width="40dp"
+            android:layout_height="2dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorNotificationBar"
+            android:translationZ="1dp" />
+
+        <View
+            android:id="@+id/viewBg"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/border_top_bottom_sheet_header" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="40dp"
+            android:paddingBottom="20dp">
+
+            <ImageView
+                android:id="@+id/ivItemImg"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/wireless_mouse" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvItemName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:paddingRight="10dp"
+                        android:text="@string/test_length_item_name"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tvItemType"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:paddingVertical="6dp"
+                        android:text="Mouse Wireless" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_below="@id/viewBg"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="-20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp">
+
+            <Button
+                android:id="@+id/btnDetail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorAccent"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:text="Detail"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:layout_below="@id/viewBg"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="-22dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp">
+
+            <TextView
+                android:padding="4dp"
+                android:id="@+id/tvItemPrice"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="sans-serif"
+                android:text="Price \n$ 1200.20"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="13.5sp" />
+
+        </androidx.cardview.widget.CardView>
+
+
+    </RelativeLayout>
+
+</LinearLayout>

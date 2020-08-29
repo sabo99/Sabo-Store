@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.Main.Checkout.ViewPager.PaymentFragment">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="170dp"
+        android:layout_marginHorizontal="50dp"
+        android:gravity="center"
+        android:text="*Payment method is only Cast On Delivery (COD), Maybe later we will update this payment feature." />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Payment Method"
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/rdCOD"
+            android:checked="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cast On Delivery" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

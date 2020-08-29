@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:id="@+id/home_group">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_store"
+            android:icon="@drawable/ic_shop"
+            android:title="@string/menu_store" />
+        <item
+            android:id="@+id/nav_cart"
+            android:icon="@drawable/ic_cart"
+            android:title="@string/menu_cart" />
+
+        <item
+            android:onClick="orderHistory"
+            android:icon="@drawable/ic_history"
+            android:title="@string/menu_order_history" />
+    </group>
+
+    <group android:id="@+id/account_group">
+
+        <item
+            android:icon="@drawable/ic_user"
+            android:title="Account"
+            android:checkable="false"
+            android:onClick="account"/>
+
+        <item
+            android:icon="@drawable/ic_exit"
+            android:title="@string/menu_sign_out"
+            android:checkable="false"
+            android:onClick="signOut"/>
+    </group>
+</menu>

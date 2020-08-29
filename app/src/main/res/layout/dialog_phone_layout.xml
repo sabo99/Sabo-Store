@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="8dp">
+
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:visibility="invisible"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-6dp"
+            android:indeterminate="true" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+
+            <ImageButton
+                android:id="@+id/ibBack"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/background_circle_photo_appbar"
+                android:src="@drawable/ic_arrow_back_accent" />
+
+            <ImageButton
+                android:id="@+id/ibClose"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/background_circle_photo_appbar"
+                android:src="@drawable/ic_close_accent" />
+
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Change Phone Number"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+
+            <LinearLayout
+                android:id="@+id/llState1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvTitle"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+                    <com.rilixtech.widget.countrycodepicker.CountryCodePicker
+                        android:id="@+id/ccPicker"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/ccPicker"
+                        app:errorEnabled="true">
+
+                        <EditText
+                            android:id="@+id/etPhone"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:hint="Phone Number"
+                            android:inputType="phone"
+                            android:maxLength="12" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                </RelativeLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="5dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp">
+
+                    <Button
+                        android:id="@+id/btnNext"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorAccent"
+                        android:clickable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:text="Next"
+                        android:textAllCaps="false"
+                        android:textColor="@android:color/white" />
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llState2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvTitle"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        app:errorEnabled="true">
+
+                        <EditText
+                            android:id="@+id/etCode"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:hint="Verify Code"
+                            android:inputType="number"
+                            android:maxLength="6" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                </RelativeLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="5dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp">
+
+                    <Button
+                        android:id="@+id/btnConfirm"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorAccent"
+                        android:clickable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:text="Verify Code"
+                        android:textAllCaps="false"
+                        android:textColor="@android:color/white" />
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

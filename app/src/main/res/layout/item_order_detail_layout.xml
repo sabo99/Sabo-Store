@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="110dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:id="@+id/ivItemImg"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="fitCenter"
+            android:padding="4dp"
+            android:src="@drawable/wireless_mouse" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/tvItemName"
+                android:layout_alignParentTop="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/test_length_item_name"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/tvItemQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvItemName"
+                android:layout_above="@id/tvItemPrice"
+                android:gravity="center_vertical"
+                android:text="2 pcs"/>
+
+            <TextView
+                android:id="@+id/tvItemPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text="$ 200.82"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

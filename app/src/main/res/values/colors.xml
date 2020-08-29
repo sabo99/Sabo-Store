@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@android:color/holo_blue_light</color>
+    <color name="colorPrimaryDark">@android:color/holo_blue_dark</color>
+    <color name="colorAccent">@android:color/holo_blue_light</color>
+    <color name="colorNotificationBar">#66000000</color>
+    <color name="colorWarning">#B3000000</color>
+
+    <color name="colorButtonNegative">#F5F5F5</color>
+
+    <color name="colorRed">#CC0000</color>
+    <color name="colorFavoriteFalse">#80000000</color>
+    <color name="colorFavoriteTrue">#FFFF6666</color>
+    <color name="colorBackground">#FFFFFFFF</color>
+    <color name="colorBackgroundGlass">#1AD8E5F6</color>
+    <color name="colorCardView">#F5F5F5</color>
+    <color name="colorSlideView">#1A000000</color>
+</resources>
+
+    <!--
+       Opacity / Alpha
+
+       100% — FF
+       90% — E6
+       80% — CC
+       70% — B3
+       60% — 99
+       50% — 80
+       40% — 66
+       30% — 4D
+       20% — 33
+       10% — 1A
+       0% — 00
+    -->
