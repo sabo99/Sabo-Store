@@ -70,6 +70,7 @@ public class OrderHistoryActivity extends AppCompatActivity {
     }
 
     private void loadOrderHistory() {
+
         progressBar.setVisibility(View.VISIBLE);
         orderRef.orderByChild("userUID")
                 .equalTo(firebaseUser.getUid())
@@ -81,6 +82,7 @@ public class OrderHistoryActivity extends AppCompatActivity {
                             for (DataSnapshot ds : snapshot.getChildren()){
                                 OrderModel orderModel = ds.getValue(OrderModel.class);
                                 orderModel.setKey(ds.getKey());
+                                orderModelList.clear();
                                 orderModelList.add(orderModel);
                             }
                             progressBar.setVisibility(View.GONE);
@@ -108,13 +110,10 @@ public class OrderHistoryActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                CustomIntent.customType(this, Common.Anim_Right_to_Left);
-                finish();
-                break;
+        if (item.getItemId() == android.R.id.home){
+            CustomIntent.customType(this, Common.Anim_Right_to_Left);
+            finish();
         }
-
         return super.onOptionsItemSelected(item);
     }
 
