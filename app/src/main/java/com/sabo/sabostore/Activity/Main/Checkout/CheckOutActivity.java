@@ -106,6 +106,7 @@ public class CheckOutActivity extends AppCompatActivity implements ILoadOffSetTi
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 
+        state = 0;
         checkState();
 
         btnToPayment.setOnClickListener(v -> {

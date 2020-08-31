@@ -69,13 +69,15 @@ public class ConfirmationFragment extends Fragment {
         tvEditOrder = root.findViewById(R.id.tvEditOrder);
         progressBar = root.findViewById(R.id.progressBar);
 
-        String shippingAddress = new StringBuilder(Common.shipping.getAddress())
-                .append(", ").append(Common.shipping.getZip())
-                .append(" ").append(Common.shipping.getCity()).toString();
+        if (Common.shipping != null){
+            String shippingAddress = new StringBuilder(Common.shipping.getAddress())
+                    .append(", ").append(Common.shipping.getZip())
+                    .append(" ").append(Common.shipping.getCity()).toString();
 
-        tvName.setText(Common.shipping.getName());
-        tvShipping.setText(shippingAddress);
-        tvTotalPayment.setText(new StringBuilder("$ ").append(Common.formatPrice(Common.totalPayment)).toString());
+            tvName.setText(Common.shipping.getName());
+            tvShipping.setText(shippingAddress);
+            tvTotalPayment.setText(new StringBuilder("$ ").append(Common.formatPrice(Common.totalPayment)).toString());
+        }
 
         rvCheckout.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
 
