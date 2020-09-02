@@ -70,7 +70,7 @@ public class OrderHistoryActivity extends AppCompatActivity {
     }
 
     private void loadOrderHistory() {
-
+        emptyOrderHistory.setVisibility(View.INVISIBLE);
         progressBar.setVisibility(View.VISIBLE);
         orderRef.orderByChild("userUID")
                 .equalTo(firebaseUser.getUid())
@@ -79,10 +79,10 @@ public class OrderHistoryActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.exists()){
+                            orderModelList.clear();
                             for (DataSnapshot ds : snapshot.getChildren()){
                                 OrderModel orderModel = ds.getValue(OrderModel.class);
                                 orderModel.setKey(ds.getKey());
-                                orderModelList.clear();
                                 orderModelList.add(orderModel);
                             }
                             progressBar.setVisibility(View.GONE);

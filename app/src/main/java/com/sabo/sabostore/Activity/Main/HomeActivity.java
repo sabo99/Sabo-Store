@@ -512,7 +512,6 @@ public class HomeActivity extends AppCompatActivity {
     public void onSeeAllCategories(AllCategoriesClickEvent event) {
         if (event.isClicked()) {
             navController.navigate(R.id.nav_store);
-            CustomIntent.customType(this, Common.Anim_Fadein_to_Fadeout);
             event.setClicked(false);
         }
     }
