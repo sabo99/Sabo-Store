@@ -33,8 +33,7 @@
         android:layout_alignParentBottom="true"
         android:orientation="vertical"
         android:paddingHorizontal="16dp"
-        android:paddingTop="16dp"
-        android:paddingBottom="10dp">
+        android:paddingTop="16dp">
 
         <RelativeLayout
             android:layout_width="match_parent"

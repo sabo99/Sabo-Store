@@ -85,6 +85,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
+                    android:clickable="false"
                     tools:listitem="@layout/item_order_list_items_layout" />
 
 
@@ -106,6 +107,19 @@
                     android:foreground="?attr/selectableItemBackground"
                     android:text="More Detail"
                     android:textColor="@color/colorPrimaryDark"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tvCancelOrder"
+                    android:layout_toRightOf="@id/tvMore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="16dp"
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:text="Cancel order"
+                    android:textColor="@color/colorCanceled"
                     android:textSize="15sp" />
 
                 <TextView

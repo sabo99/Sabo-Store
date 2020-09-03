@@ -2,6 +2,7 @@ package com.sabo.sabostore.Adapter;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.Gravity;
@@ -10,21 +11,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.FirebaseDatabase;
 import com.ontbee.legacyforks.cn.pedant.SweetAlert.SweetAlertDialog;
 import com.sabo.sabostore.Common.Common;
+import com.sabo.sabostore.EventBus.UpdateOrderStatusEvent;
 import com.sabo.sabostore.Model.OrderModel;
 import com.sabo.sabostore.R;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapter.ViewHolder> {
@@ -65,10 +73,44 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
         holder.tvTotalPrice.setText(new StringBuilder("$ ").append(Common.formatPrice(list.getTotalPayment())));
         holder.tvOrderStatus.setText(Common.covertStatus(list.getOrderStatus()));
 
+        /** Check Order Status */
         checkOrderStatus(holder, list.getOrderStatus());
 
         holder.tvMore.setOnClickListener(v -> {
             showDetailOrder(list);
+        });
+
+        holder.tvCancelOrder.setOnClickListener(v -> {
+            new SweetAlertDialog(context, SweetAlertDialog.WARNING_TYPE)
+                    .setTitleText("Are you sure?")
+                    .setContentText("Cancel the order")
+                    .showCancelButton(true)
+                    .setCancelText("No")
+                    .setCancelClickListener(sweetAlertDialog -> {
+                        sweetAlertDialog.dismissWithAnimation();
+                    })
+                    .setConfirmText("Yes")
+                    .setConfirmClickListener(sweetAlertDialog -> {
+                        HashMap<String, Object> updateStatusOrder = new HashMap<>();
+                        updateStatusOrder.put(Common.KEY_ORDER_STATUS, 0);
+
+                        FirebaseDatabase.getInstance().getReference(Common.ORDER_REF)
+                                .child(list.getKey())
+                                .updateChildren(updateStatusOrder)
+                                .addOnSuccessListener(aVoid -> {
+                                    EventBus.getDefault().postSticky(new UpdateOrderStatusEvent(true));
+                                    sweetAlertDialog.setTitleText("Success!")
+                                            .setContentText("The order has been canceled.")
+                                            .showCancelButton(false)
+                                            .setConfirmText("Close")
+                                            .setConfirmClickListener(sweetAlertDialog1 -> {
+                                                sweetAlertDialog1.dismissWithAnimation();
+                                            })
+                                            .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                                });
+
+                    })
+                    .show();
         });
 
         /** Set OrderListItems */
@@ -76,21 +118,36 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
     }
 
     private void checkOrderStatus(ViewHolder holder, int orderStatus) {
-        switch (orderStatus){
-            case 0 :
+        switch (orderStatus) {
+            case 0:
                 holder.ivStatus.setImageResource(R.drawable.ic_close_black_24dp);
+                holder.ivStatus.setImageTintList(ColorStateList.valueOf(context.getResources().getColor(R.color.colorCanceled)));
+                holder.tvOrderStatus.setTextColor(ColorStateList.valueOf(context.getResources().getColor(R.color.colorCanceled)));
+                holder.tvCancelOrder.setVisibility(View.GONE);
                 break;
-            case 1 :
+            case 1:
                 holder.ivStatus.setImageResource(R.drawable.ic_history);
+                holder.ivStatus.setImageTintList(ColorStateList.valueOf(context.getResources().getColor(R.color.colorOrdered)));
+                holder.tvOrderStatus.setTextColor(ColorStateList.valueOf(context.getResources().getColor(R.color.colorOrdered)));
+                holder.tvCancelOrder.setVisibility(View.VISIBLE);
                 break;
-            case 2 :
+            case 2:
                 holder.ivStatus.setImageResource(R.drawable.ic_on_process);
+                holder.ivStatus.setImageTintList(ColorStateList.valueOf(context.getResources().getColor(R.color.colorOnProcess)));
+                holder.tvOrderStatus.setTextColor(ColorStateList.valueOf(context.getResources().getColor(R.color.colorOnProcess)));
+                holder.tvCancelOrder.setVisibility(View.GONE);
                 break;
-            case 3 :
+            case 3:
                 holder.ivStatus.setImageResource(R.drawable.ic_shipped);
+                holder.ivStatus.setImageTintList(ColorStateList.valueOf(context.getResources().getColor(R.color.colorShipped)));
+                holder.tvOrderStatus.setTextColor(ColorStateList.valueOf(context.getResources().getColor(R.color.colorShipped)));
+                holder.tvCancelOrder.setVisibility(View.GONE);
                 break;
-            case 4 :
+            case 4:
                 holder.ivStatus.setImageResource(R.drawable.ic_received);
+                holder.ivStatus.setImageTintList(ColorStateList.valueOf(context.getResources().getColor(R.color.colorReceived)));
+                holder.tvOrderStatus.setTextColor(ColorStateList.valueOf(context.getResources().getColor(R.color.colorReceived)));
+                holder.tvCancelOrder.setVisibility(View.GONE);
                 break;
             default:
                 break;
@@ -147,12 +204,10 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
             });
 
 
-            if (list.getTotalPayment() > Common.minimumPriceFreeDelivery){
+            if (list.getTotalPayment() > Common.minimumPriceFreeDelivery) {
                 tvDeliveryCost.setText("FREE");
                 tvSubTotalPrice.setText(new StringBuilder("$ ").append(Common.formatPrice(list.getTotalPayment())).toString());
-            }
-
-            else {
+            } else {
                 tvDeliveryCost.setText(new StringBuilder("$ ").append(Common.formatPrice(Common.deliveryCost)).toString());
                 tvSubTotalPrice.setText(new StringBuilder("$ ").append(Common.formatPrice(list.getTotalPayment() - Common.deliveryCost).toString()));
             }
@@ -174,7 +229,7 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView ivStatus;
-        TextView tvOrderNumber, tvOrderDate, tvOrderStatus, tvTotalPrice, tvMore;
+        TextView tvOrderNumber, tvOrderDate, tvOrderStatus, tvTotalPrice, tvMore, tvCancelOrder;
         RecyclerView rvItemOrderListItems;
 
         public ViewHolder(@NonNull View itemView) {
@@ -186,6 +241,7 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
             tvOrderStatus = itemView.findViewById(R.id.tvOrderStatus);
             tvTotalPrice = itemView.findViewById(R.id.tvTotalPrice);
             tvMore = itemView.findViewById(R.id.tvMore);
+            tvCancelOrder = itemView.findViewById(R.id.tvCancelOrder);
             rvItemOrderListItems = itemView.findViewById(R.id.rvItemOrderListItems);
         }
     }

@@ -35,19 +35,6 @@ public class Preferences {
     /** Checkout Shipping */
 
     /**
-     * Name
-     */
-    public static void setName(Context context, String name) {
-        SharedPreferences.Editor editor = getSharedPreference(context).edit();
-        editor.putString(Common.SF_NAME, name);
-        editor.apply();
-    }
-
-    public static String getName(Context context) {
-        return getSharedPreference(context).getString(Common.SF_NAME, "");
-    }
-
-    /**
      * Phone
      */
     public static void setPhone(Context context, String phone) {

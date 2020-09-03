@@ -3,18 +3,25 @@
     <color name="colorPrimary">@android:color/holo_blue_light</color>
     <color name="colorPrimaryDark">@android:color/holo_blue_dark</color>
     <color name="colorAccent">@android:color/holo_blue_light</color>
+
     <color name="colorNotificationBar">#66000000</color>
     <color name="colorWarning">#B3000000</color>
-
     <color name="colorButtonNegative">#F5F5F5</color>
+    <color name="colorRed">@android:color/holo_red_dark</color>
 
-    <color name="colorRed">#CC0000</color>
     <color name="colorFavoriteFalse">#80000000</color>
     <color name="colorFavoriteTrue">#FFFF6666</color>
+
     <color name="colorBackground">#FFFFFFFF</color>
     <color name="colorBackgroundGlass">#1AD8E5F6</color>
     <color name="colorCardView">#F5F5F5</color>
     <color name="colorSlideView">#1A000000</color>
+
+    <color name="colorCanceled">@android:color/holo_red_dark</color>
+    <color name="colorOrdered">#FF00C2E0</color>
+    <color name="colorOnProcess">@android:color/holo_blue_light</color>
+    <color name="colorShipped">@color/stepper_text_blue</color>
+    <color name="colorReceived">@android:color/holo_blue_dark</color>
 </resources>
 
     <!--

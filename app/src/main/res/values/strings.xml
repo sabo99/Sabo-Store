@@ -39,4 +39,9 @@
     <string name="textNewEmail">New Email Address</string>
     <string name="textDescriptionSpec">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
     <string name="menu_order_history">Order History</string>
+    <string name="textOrderedDetail">If the order status has been ordered, you can cancel the order. However, if it has been processed, you cannot cancel the order.</string>
+    <string name="textCanceledDetail">The order has been canceled by the customer.</string>
+    <string name="textOnProcessDetail">Orders in the process of making goods information data and placing goods in order to arrive at their destination.</string>
+    <string name="textShippedDetail">Orders in the process of sending goods to their destination.</string>
+    <string name="textReceivedDetail">The order has arrived and is accepted by the customer.</string>
 </resources>

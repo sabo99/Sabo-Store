@@ -49,6 +49,11 @@ public class Common {
     public static final String KEY_PHONE = "phone";
 
     /**
+     * Child Reference of ORDER_REF
+     */
+    public static final String KEY_ORDER_STATUS = "orderStatus";
+
+    /**
      * KEY SharePreference
      */
     public static final String SF_EMAIL = "sf_email";
@@ -166,7 +171,7 @@ public class Common {
         switch (orderStatus)
         {
             case 0:
-                return "Cancelled";
+                return "Canceled";
             case 1 :
                 return "Ordered";
             case 2 :
