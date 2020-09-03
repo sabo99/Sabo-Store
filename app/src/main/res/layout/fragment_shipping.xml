@@ -147,12 +147,21 @@
 
         </LinearLayout>
 
+        <Switch
+            android:id="@+id/switchSaveShipping"
+            android:layout_gravity="end"
+            android:layout_width="match_parent"
+            android:textSize="16sp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="16dp"
+            android:text="Save for next purchase" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0.6dp"
-            android:layout_marginTop="30dp"
-            android:background="@color/colorNotificationBar"/>
+            android:layout_marginTop="10dp"
+            android:background="@color/colorNotificationBar" />
 
         <LinearLayout
             android:layout_marginTop="40dp"

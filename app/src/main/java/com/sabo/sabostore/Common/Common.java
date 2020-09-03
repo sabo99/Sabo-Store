@@ -53,6 +53,15 @@ public class Common {
      */
     public static final String SF_EMAIL = "sf_email";
     public static final String SF_PASSWORD = "sf_password";
+    /**
+     * Checkout Shipping
+     */
+    public static final String SF_NAME = "sf_name";
+    public static final String SF_PHONE = "sf_name";
+    public static final String SF_ADDRESS = "sf_add";
+    public static final String SF_ZIP = "sf_zip";
+    public static final String SF_CITY = "sf_city";
+    public static final String SF_SAVE_SHIPPING = "save_shipping";
 
     /**
      * Animation Intent
