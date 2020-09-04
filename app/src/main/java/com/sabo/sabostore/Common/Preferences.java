@@ -102,7 +102,6 @@ public class Preferences {
 
     public static void clearShipping(Context context) {
         SharedPreferences.Editor editor = getSharedPreference(context).edit();
-        editor.remove(Common.SF_NAME);
         editor.remove(Common.SF_PHONE);
         editor.remove(Common.SF_ADDRESS);
         editor.remove(Common.SF_ZIP);
@@ -115,11 +114,11 @@ public class Preferences {
         SharedPreferences.Editor editor = getSharedPreference(context).edit();
         editor.remove(Common.SF_EMAIL);
         editor.remove(Common.SF_PASSWORD);
-        editor.remove(Common.SF_NAME);
         editor.remove(Common.SF_PHONE);
         editor.remove(Common.SF_ADDRESS);
         editor.remove(Common.SF_ZIP);
         editor.remove(Common.SF_CITY);
+        editor.remove(Common.SF_SAVE_SHIPPING);
         editor.apply();
     }
 }

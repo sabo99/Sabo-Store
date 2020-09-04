@@ -290,40 +290,45 @@ public class HomeActivity extends AppCompatActivity {
 
 
         /** Set Photo profile from FirebaseDatabase */
-        rootRef.child(Common.USER_REF).child(firebaseUser.getUid())
-                .addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()) {
-                            UserModel userModel = snapshot.getValue(UserModel.class);
+        if (firebaseAuth != null) {
+            rootRef.child(Common.USER_REF).child(firebaseUser.getUid())
+                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.exists()) {
+                                UserModel userModel = snapshot.getValue(UserModel.class);
 
-                            if (userModel.getImage().equals("")) {
-                                urlPhoto = userModel.getImage();
-                                Picasso.get().load(R.drawable.no_profile).into(civPhotoHeader);
-                                Picasso.get().load(R.drawable.no_profile).into(civProfilePhoto);
-                            } else {
-                                urlPhoto = userModel.getImage();
-                                Picasso.get().load(userModel.getImage()).placeholder(R.drawable.no_profile).into(civPhotoHeader);
-                                Picasso.get().load(userModel.getImage()).placeholder(R.drawable.no_profile).into(civProfilePhoto);
+                                if (snapshot.hasChild("image")) {
+                                    if (userModel.getImage().equals("")) {
+                                        urlPhoto = userModel.getImage();
+                                        Picasso.get().load(R.drawable.no_profile).into(civPhotoHeader);
+                                        Picasso.get().load(R.drawable.no_profile).into(civProfilePhoto);
+                                    } else {
+                                        urlPhoto = userModel.getImage();
+                                        Picasso.get().load(userModel.getImage()).placeholder(R.drawable.no_profile).into(civPhotoHeader);
+                                        Picasso.get().load(userModel.getImage()).placeholder(R.drawable.no_profile).into(civProfilePhoto);
+                                    }
+                                }
+
+
+                                tvNameHeader.setText(userModel.getName());
+
+                                progressBarHeader.setVisibility(View.GONE);
+
+                                mainLoading.dismissWithAnimation();
+                                mainLoading.dismiss();
                             }
-
-                            tvNameHeader.setText(userModel.getName());
-
-                            progressBarHeader.setVisibility(View.GONE);
-
-                            mainLoading.dismissWithAnimation();
-                            mainLoading.dismiss();
                         }
-                    }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        progressBarHeader.setVisibility(View.GONE);
-                        mainLoading.dismiss();
-                        Picasso.get().load(R.drawable.no_profile).into(civPhotoHeader);
-                        tvNameHeader.setText("No Connection");
-                    }
-                });
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            progressBarHeader.setVisibility(View.GONE);
+                            mainLoading.dismiss();
+                            Picasso.get().load(R.drawable.no_profile).into(civPhotoHeader);
+                            tvNameHeader.setText("No Connection");
+                        }
+                    });
+        }
     }
 
     @Override
@@ -374,7 +379,7 @@ public class HomeActivity extends AppCompatActivity {
                         Preferences.clearPreferences(getBaseContext());
                         Intent i = new Intent(HomeActivity.this, SignInActivity.class);
                         CustomIntent.customType(HomeActivity.this, Common.Anim_Fadein_to_Fadeout);
-                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(i);
                         finish();
                     }
@@ -460,6 +465,8 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     protected void onStop() {
+        /** On Stop Activity or User not used this APP update Status to "off" */
+        updateStatusOff();
         EventBus.getDefault().unregister(this);
         super.onStop();
     }
@@ -469,13 +476,6 @@ public class HomeActivity extends AppCompatActivity {
         /** On Destroy Activity or User not used this APP update Status to "off" */
         updateStatusOff();
         super.onDestroy();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        /** On Pause Activity or User not used this APP update Status to "off" */
-        updateStatusOff();
     }
 
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)

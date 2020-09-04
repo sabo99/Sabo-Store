@@ -136,9 +136,10 @@ public class DeleteAccountActivity extends AppCompatActivity {
                                             deleteAllOfAccount(loading);
                                         } else {
                                             sweetAlertDialog.dismiss();
+                                            loading.dismissWithAnimation();
                                             btnDeleteAccount.setEnabled(true);
                                             progressBar.setVisibility(View.INVISIBLE);
-                                            new SweetAlertDialog(getBaseContext(), SweetAlertDialog.WARNING_TYPE)
+                                            new SweetAlertDialog(DeleteAccountActivity.this, SweetAlertDialog.WARNING_TYPE)
                                                     .setTitleText("Oops!")
                                                     .setContentText(task.getException().getMessage())
                                                     .show();
@@ -146,6 +147,7 @@ public class DeleteAccountActivity extends AppCompatActivity {
                                     })
                                     .addOnFailureListener(e -> {
                                         sweetAlertDialog.dismiss();
+                                        loading.dismissWithAnimation();
                                         btnDeleteAccount.setEnabled(true);
                                         progressBar.setVisibility(View.INVISIBLE);
                                         Log.d("e", e.getMessage());
@@ -207,7 +209,11 @@ public class DeleteAccountActivity extends AppCompatActivity {
         firebaseAuth.getCurrentUser().delete()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
+
+                        /** Firebase SignOut */
                         firebaseAuth.signOut();
+
+                        /** Remove All References */
                         Preferences.clearPreferences(getBaseContext());
 
                         loading.dismiss();
@@ -217,7 +223,7 @@ public class DeleteAccountActivity extends AppCompatActivity {
                                 .setConfirmClickListener(sweetAlertDialog -> {
                                     sweetAlertDialog.dismiss();
                                     Intent i = new Intent(DeleteAccountActivity.this, SplashScreenActivity.class);
-                                    i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                                     startActivity(i);
                                     finish();
                                 }).show();

@@ -45,7 +45,8 @@ public class SplashScreenActivity extends AppCompatActivity {
                 startActivity(new Intent(SplashScreenActivity.this, HomeActivity.class));
                 CustomIntent.customType(SplashScreenActivity.this, Common.Anim_Fadein_to_Fadeout);
                 finish();
-            }else {
+            } else {
+                firebaseAuth.signOut();
                 startActivity(new Intent(SplashScreenActivity.this, SignInActivity.class));
                 CustomIntent.customType(SplashScreenActivity.this, Common.Anim_Fadein_to_Fadeout);
                 finish();
