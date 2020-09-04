@@ -150,6 +150,7 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
                 holder.tvCancelOrder.setVisibility(View.GONE);
                 break;
             default:
+                holder.tvCancelOrder.setVisibility(View.GONE);
                 break;
         }
     }
@@ -209,7 +210,7 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
                 tvSubTotalPrice.setText(new StringBuilder("$ ").append(Common.formatPrice(list.getTotalPayment())).toString());
             } else {
                 tvDeliveryCost.setText(new StringBuilder("$ ").append(Common.formatPrice(Common.deliveryCost)).toString());
-                tvSubTotalPrice.setText(new StringBuilder("$ ").append(Common.formatPrice(list.getTotalPayment() - Common.deliveryCost).toString()));
+                tvSubTotalPrice.setText(new StringBuilder("$ ").append(Common.formatPrice(list.getTotalPayment() - Common.deliveryCost)));
             }
 
             tvTotalPrice.setText(new StringBuilder("$ ").append(Common.formatPrice(list.getTotalPayment())).toString());

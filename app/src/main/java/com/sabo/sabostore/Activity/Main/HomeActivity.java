@@ -36,6 +36,7 @@ import com.sabo.sabostore.EventBus.HideFabEvent;
 import com.sabo.sabostore.EventBus.NavCartEvent;
 import com.sabo.sabostore.EventBus.PreviewPhotoEvent;
 import com.sabo.sabostore.EventBus.AllCategoriesClickEvent;
+import com.sabo.sabostore.EventBus.UpdateStatusUserEvent;
 import com.sabo.sabostore.Model.CurrencyRates.CurrencyModel;
 import com.sabo.sabostore.Model.CurrencyRates.Rates;
 import com.sabo.sabostore.Model.DeliveryCostModel;
@@ -206,7 +207,7 @@ public class HomeActivity extends AppCompatActivity {
                                             searchTempList.add(finalItemsModel1);
 
 
-                                            mainLoading.dismiss();
+                                            mainLoading.dismissWithAnimation();
                                         }
 
                                         @Override
@@ -290,45 +291,37 @@ public class HomeActivity extends AppCompatActivity {
 
 
         /** Set Photo profile from FirebaseDatabase */
-        if (firebaseAuth != null) {
-            rootRef.child(Common.USER_REF).child(firebaseUser.getUid())
-                    .addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if (snapshot.exists()) {
-                                UserModel userModel = snapshot.getValue(UserModel.class);
+        rootRef.child(Common.USER_REF).child(firebaseUser.getUid())
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            UserModel userModel = snapshot.getValue(UserModel.class);
 
-                                if (snapshot.hasChild("image")) {
-                                    if (userModel.getImage().equals("")) {
-                                        urlPhoto = userModel.getImage();
-                                        Picasso.get().load(R.drawable.no_profile).into(civPhotoHeader);
-                                        Picasso.get().load(R.drawable.no_profile).into(civProfilePhoto);
-                                    } else {
-                                        urlPhoto = userModel.getImage();
-                                        Picasso.get().load(userModel.getImage()).placeholder(R.drawable.no_profile).into(civPhotoHeader);
-                                        Picasso.get().load(userModel.getImage()).placeholder(R.drawable.no_profile).into(civProfilePhoto);
-                                    }
-                                }
-
-
-                                tvNameHeader.setText(userModel.getName());
-
-                                progressBarHeader.setVisibility(View.GONE);
-
-                                mainLoading.dismissWithAnimation();
-                                mainLoading.dismiss();
+                            if (userModel.getImage().equals("")) {
+                                urlPhoto = userModel.getImage();
+                                Picasso.get().load(R.drawable.no_profile).into(civPhotoHeader);
+                                Picasso.get().load(R.drawable.no_profile).into(civProfilePhoto);
+                            } else {
+                                urlPhoto = userModel.getImage();
+                                Picasso.get().load(userModel.getImage()).placeholder(R.drawable.no_profile).into(civPhotoHeader);
+                                Picasso.get().load(userModel.getImage()).placeholder(R.drawable.no_profile).into(civProfilePhoto);
                             }
-                        }
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
+                            tvNameHeader.setText(userModel.getName());
                             progressBarHeader.setVisibility(View.GONE);
-                            mainLoading.dismiss();
-                            Picasso.get().load(R.drawable.no_profile).into(civPhotoHeader);
-                            tvNameHeader.setText("No Connection");
+                            mainLoading.dismissWithAnimation();
                         }
-                    });
-        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        progressBarHeader.setVisibility(View.GONE);
+                        mainLoading.dismiss();
+                        Picasso.get().load(R.drawable.no_profile).into(civPhotoHeader);
+                        tvNameHeader.setText("No Connection");
+                    }
+                });
     }
 
     @Override
@@ -392,40 +385,6 @@ public class HomeActivity extends AppCompatActivity {
                 });
     }
 
-    private void updateStatusOn() {
-        Map<String, Object> updateStatus = new HashMap<>();
-        updateStatus.put(Common.KEY_STATUS, "on");
-
-        FirebaseDatabase.getInstance().getReference(Common.USER_REF)
-                .child(firebaseUser.getUid())
-                .updateChildren(updateStatus)
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        Log.d("task", "Success");
-                    }
-                })
-                .addOnFailureListener(e -> {
-                    Log.d("task", e.getMessage());
-                });
-    }
-
-    private void updateStatusOff() {
-        Map<String, Object> updateStatus = new HashMap<>();
-        updateStatus.put(Common.KEY_STATUS, "off");
-
-        FirebaseDatabase.getInstance().getReference(Common.USER_REF)
-                .child(firebaseUser.getUid())
-                .updateChildren(updateStatus)
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        Log.d("task", "Success");
-                    }
-                })
-                .addOnFailureListener(e -> {
-                    Log.d("task", e.getMessage());
-                });
-    }
-
     /** Go to AccountActivity */
     public void account(MenuItem item) {
         drawer.closeDrawers();
@@ -460,21 +419,26 @@ public class HomeActivity extends AppCompatActivity {
         super.onStart();
         EventBus.getDefault().register(this);
         /** On Start Activity or User used this APP update Status to "on" */
-        updateStatusOn();
+        EventBus.getDefault().postSticky(new UpdateStatusUserEvent(true, false));
     }
 
     @Override
     protected void onStop() {
-        /** On Stop Activity or User not used this APP update Status to "off" */
-        updateStatusOff();
         EventBus.getDefault().unregister(this);
         super.onStop();
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        /** On Pause Activity or User not used this APP update Status to "off" */
+        EventBus.getDefault().postSticky(new UpdateStatusUserEvent(false, true));
+    }
+
+    @Override
     protected void onDestroy() {
         /** On Destroy Activity or User not used this APP update Status to "off" */
-        updateStatusOff();
+        EventBus.getDefault().postSticky(new UpdateStatusUserEvent(false, true));
         super.onDestroy();
     }
 
@@ -563,5 +527,51 @@ public class HomeActivity extends AppCompatActivity {
             navController.navigate(R.id.nav_cart);
             event.setClicked(false);
         }
+    }
+
+    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
+    public void onUpdateStatusUserLogin(UpdateStatusUserEvent event) {
+        if (event.isOn()) {
+            updateStatusOn();
+            event.setOn(false);
+        }
+        if (event.isOff()) {
+            updateStatusOff();
+            event.setOff(false);
+        }
+    }
+
+    private void updateStatusOn() {
+        Map<String, Object> updateStatus = new HashMap<>();
+        updateStatus.put(Common.KEY_STATUS, "on");
+
+        FirebaseDatabase.getInstance().getReference(Common.USER_REF)
+                .child(firebaseUser.getUid())
+                .updateChildren(updateStatus)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Log.d("task", "Success");
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Log.d("task", e.getMessage());
+                });
+    }
+
+    private void updateStatusOff() {
+        Map<String, Object> updateStatus = new HashMap<>();
+        updateStatus.put(Common.KEY_STATUS, "off");
+
+        FirebaseDatabase.getInstance().getReference(Common.USER_REF)
+                .child(firebaseUser.getUid())
+                .updateChildren(updateStatus)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Log.d("task", "Success");
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Log.d("task", e.getMessage());
+                });
     }
 }

@@ -8,8 +8,11 @@ import android.view.MenuItem;
 
 import com.github.chrisbanes.photoview.PhotoView;
 import com.sabo.sabostore.Common.Common;
+import com.sabo.sabostore.EventBus.UpdateStatusUserEvent;
 import com.sabo.sabostore.R;
 import com.squareup.picasso.Picasso;
+
+import org.greenrobot.eventbus.EventBus;
 
 import maes.tech.intentanim.CustomIntent;
 

@@ -105,6 +105,7 @@ public class DeleteAccountActivity extends AppCompatActivity {
                 tilPassword.setHelperTextEnabled(true);
                 tilPassword.setHelperText("Required!");
             } else {
+                tilPassword.setHelperTextEnabled(false);
                 new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
                         .setTitleText("Are you sure?")
                         .setContentText("You won't be able to revert this account!")

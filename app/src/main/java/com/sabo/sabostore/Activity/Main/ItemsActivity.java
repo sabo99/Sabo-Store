@@ -27,9 +27,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.sabo.sabostore.Adapter.ItemsAdapter;
 import com.sabo.sabostore.Common.Common;
+import com.sabo.sabostore.EventBus.UpdateStatusUserEvent;
 import com.sabo.sabostore.Model.ItemsModel;
 import com.sabo.sabostore.Model.StoreModel;
 import com.sabo.sabostore.R;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -155,23 +158,6 @@ public class ItemsActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    protected void onStop() {
-        tvEmptySearch.setText("");
-        super.onStop();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        tvEmptySearch.setText("");
-    }
-
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.search, menu);
@@ -198,5 +184,17 @@ public class ItemsActivity extends AppCompatActivity {
     public void finish() {
         super.finish();
         CustomIntent.customType(this, Common.Anim_Right_to_Left);
+    }
+
+    @Override
+    protected void onStop() {
+        tvEmptySearch.setText("");
+        super.onStop();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        tvEmptySearch.setText("");
     }
 }
