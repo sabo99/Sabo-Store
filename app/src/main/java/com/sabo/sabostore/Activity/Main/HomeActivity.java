@@ -2,13 +2,23 @@ package com.sabo.sabostore.Activity.Main;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Menu;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
 import com.andremion.counterfab.CounterFab;
 import com.google.android.material.navigation.NavigationView;
@@ -24,18 +34,18 @@ import com.ontbee.legacyforks.cn.pedant.SweetAlert.SweetAlertDialog;
 import com.sabo.sabostore.API.APICurrency;
 import com.sabo.sabostore.Activity.Account.AccountActivity;
 import com.sabo.sabostore.Activity.Account.AccountMenu.OrderHistoryActivity;
-import com.sabo.sabostore.Activity.Account.AccountMenu.Profile.ProfilePhotoPreviewActivity;
 import com.sabo.sabostore.Activity.Account.AccountMenu.Profile.ProfileActivity;
+import com.sabo.sabostore.Activity.Account.AccountMenu.Profile.ProfilePhotoPreviewActivity;
 import com.sabo.sabostore.Activity.SignInActivity;
 import com.sabo.sabostore.Common.Common;
 import com.sabo.sabostore.Common.Preferences;
+import com.sabo.sabostore.EventBus.AllCategoriesClickEvent;
 import com.sabo.sabostore.EventBus.CounterCartEvent;
 import com.sabo.sabostore.EventBus.HideAppBarCartEvent;
 import com.sabo.sabostore.EventBus.HideAppBarProfileEvent;
 import com.sabo.sabostore.EventBus.HideFabEvent;
 import com.sabo.sabostore.EventBus.NavCartEvent;
 import com.sabo.sabostore.EventBus.PreviewPhotoEvent;
-import com.sabo.sabostore.EventBus.AllCategoriesClickEvent;
 import com.sabo.sabostore.EventBus.UpdateStatusUserEvent;
 import com.sabo.sabostore.Model.CurrencyRates.CurrencyModel;
 import com.sabo.sabostore.Model.CurrencyRates.Rates;
@@ -48,15 +58,6 @@ import com.sabo.sabostore.RoomDB.Cart.CartDataSource;
 import com.sabo.sabostore.RoomDB.Cart.LocalCartDataSource;
 import com.sabo.sabostore.RoomDB.RoomDBHost;
 import com.squareup.picasso.Picasso;
-
-import androidx.annotation.NonNull;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -205,15 +206,11 @@ public class HomeActivity extends AppCompatActivity {
 
                                             finalItemsModel1.setType(storeModel.getName());
                                             searchTempList.add(finalItemsModel1);
-
-
-                                            mainLoading.dismissWithAnimation();
                                         }
 
                                         @Override
                                         public void onCancelled(@NonNull DatabaseError error) {
                                             progressBarHeader.setVisibility(View.GONE);
-                                            mainLoading.dismiss();
                                         }
                                     });
                         }
@@ -225,7 +222,6 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 progressBarHeader.setVisibility(View.GONE);
-                mainLoading.dismiss();
             }
         });
     }
@@ -247,7 +243,25 @@ public class HomeActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<CurrencyModel> call, Throwable t) {
-
+                progressBarHeader.setVisibility(View.GONE);
+                new Handler().postDelayed(() -> {
+                    if (t.getMessage().contains("api"))
+                        mainLoading.setTitleText("No Connection!")
+                                .setContentText("Please turn on the internet connection on your device")
+                                .setConfirmText("Close")
+                                .setConfirmClickListener(sweetAlertDialog -> {
+                                    sweetAlertDialog.dismissWithAnimation();
+                                })
+                                .changeAlertType(SweetAlertDialog.WARNING_TYPE);
+                    else
+                        mainLoading.setTitleText("Oops!")
+                                .setContentText(t.getMessage())
+                                .setConfirmText("Close")
+                                .setConfirmClickListener(sweetAlertDialog -> {
+                                    sweetAlertDialog.dismissWithAnimation();
+                                })
+                                .changeAlertType(SweetAlertDialog.WARNING_TYPE);
+                }, 1000);
             }
         });
     }
@@ -270,7 +284,6 @@ public class HomeActivity extends AppCompatActivity {
         civProfilePhoto = toolbar.findViewById(R.id.civProfilePhoto);
 
         badge = toolbar.findViewById(R.id.badge);
-
 
         includeCart.setOnClickListener(v -> {
             navController.navigate(R.id.nav_cart);
@@ -316,8 +329,6 @@ public class HomeActivity extends AppCompatActivity {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        progressBarHeader.setVisibility(View.GONE);
-                        mainLoading.dismiss();
                         Picasso.get().load(R.drawable.no_profile).into(civPhotoHeader);
                         tvNameHeader.setText("No Connection");
                     }
@@ -455,13 +466,15 @@ public class HomeActivity extends AppCompatActivity {
 
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
     public void isHideAppBarCart(HideAppBarCartEvent event) {
-        if (event.isCartHidden()) {
-            hideAppBarCart = event.isCartHidden();
-            initViewsUserHeader(navigationView, toolbar);
-        } else {
-            hideAppBarCart = event.isCartHidden();
-            initViewsUserHeader(navigationView, toolbar);
-        }
+//        if (event.isCartHidden()) {
+//            hideAppBarCart = event.isCartHidden();
+//            initViewsUserHeader(navigationView, toolbar);
+//        } else {
+//            hideAppBarCart = event.isCartHidden();
+//            initViewsUserHeader(navigationView, toolbar);
+//        }
+        hideAppBarCart = event.isCartHidden();
+        initViewsUserHeader(navigationView, toolbar);
     }
 
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
