@@ -42,6 +42,7 @@
                 android:layout_weight="1.9"
                 android:enabled="false"
                 android:inputType="text"
+                android:textSize="16sp"
                 android:textColor="@android:color/black" />
 
         </LinearLayout>
@@ -66,6 +67,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.9"
+                android:textSize="16sp"
                 android:inputType="phone"
                 android:textColor="@android:color/black" />
 
@@ -91,6 +93,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.9"
+                android:textSize="16sp"
                 android:inputType="textPostalAddress"
                 android:textColor="@android:color/black" />
 
@@ -117,6 +120,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1.9"
                 android:inputType="number"
+                android:textSize="16sp"
                 android:textColor="@android:color/black" />
 
         </LinearLayout>
@@ -143,6 +147,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1.9"
                 android:inputType="text"
+                android:textSize="16sp"
                 android:textColor="@android:color/black" />
 
         </LinearLayout>

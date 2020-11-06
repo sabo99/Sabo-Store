@@ -86,6 +86,7 @@
                             android:layout_height="match_parent"
                             android:hint="Phone Number"
                             android:inputType="phone"
+                            android:textSize="16sp"
                             android:maxLength="12" />
 
                     </com.google.android.material.textfield.TextInputLayout>

@@ -41,12 +41,12 @@
 
             <LinearLayout
                 android:id="@+id/llState1"
-                android:visibility="invisible"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:paddingHorizontal="24dp"
-                android:paddingVertical="16dp">
+                android:paddingVertical="16dp"
+                android:visibility="invisible">
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -86,7 +86,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Old Email"
-                        android:inputType="textEmailAddress" />
+                        android:inputType="textEmailAddress"
+                        android:textSize="16sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -151,10 +152,10 @@
 
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_centerVertical="true"
                     android:id="@+id/tilNewEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
                     app:errorEnabled="true"
                     app:startIconDrawable="@drawable/ic_change_email_black">
 
@@ -163,7 +164,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="@string/textNewEmail"
-                        android:inputType="textEmailAddress" />
+                        android:inputType="textEmailAddress"
+                        android:textSize="16sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 

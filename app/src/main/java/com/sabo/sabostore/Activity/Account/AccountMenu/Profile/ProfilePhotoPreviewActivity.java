@@ -284,7 +284,7 @@ public class ProfilePhotoPreviewActivity extends AppCompatActivity {
         } else {
             /** IF Cancel Crop pickImgUri return NULL & Preview Image set Default */
             pickImgUri = null;
-            finish();
+            //finish();
         }
 
     }
