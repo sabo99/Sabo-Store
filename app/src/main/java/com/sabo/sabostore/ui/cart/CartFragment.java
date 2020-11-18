@@ -134,7 +134,7 @@ public class CartFragment extends Fragment {
                             CartItem cartItem = adapter.getItemAtPosition(pos);
                             cartDataSource.deleteCartItem(cartItem)
                                     .subscribeOn(Schedulers.io())
-                                    .subscribeOn(AndroidSchedulers.mainThread())
+                                    .observeOn(AndroidSchedulers.mainThread())
                                     .subscribe(new SingleObserver<Integer>() {
                                         @Override
                                         public void onSubscribe(Disposable d) {
