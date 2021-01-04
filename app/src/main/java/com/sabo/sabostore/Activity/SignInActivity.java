@@ -182,9 +182,14 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                                                         }
                                                     })
                                                     .addOnFailureListener(e -> {
-                                                        dialog.dismiss();
                                                         loading.dismiss();
-                                                        Log.d("sendPasswordReset", e.getMessage());
+                                                        new SweetAlertDialog(SignInActivity.this, SweetAlertDialog.WARNING_TYPE)
+                                                                .setTitleText("Oops!")
+                                                                .setContentText(e.getMessage())
+                                                                .setConfirmClickListener(sweetAlertDialog -> {
+                                                                    sweetAlertDialog.dismiss();
+                                                                })
+                                                                .show();
                                                     });
                                         } else {
                                             loading.dismiss();

@@ -22,7 +22,7 @@ import org.greenrobot.eventbus.EventBus;
  */
 public class ProfilePhotoSheetFragment extends BottomSheetDialogFragment {
 
-    public static ProfilePhotoSheetFragment instance;
+    private static ProfilePhotoSheetFragment instance;
     private LinearLayout removePhoto, changePhoto;
 
     public static ProfilePhotoSheetFragment getInstance() {
