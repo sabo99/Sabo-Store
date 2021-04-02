@@ -8,10 +8,10 @@ import retrofit2.http.GET;
 public interface APICurrency {
 
     /**
-     * base = USD
-     * Convert IDR to USD
+     * base = EUR
+     * Convert EUR to IDR
      * */
 
-    @GET("latest?base=USD")
+    @GET("&symbols=IDR")
     Call<CurrencyModel> getExchangeRatesAPI();
 }

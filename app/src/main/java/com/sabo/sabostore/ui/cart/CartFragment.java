@@ -85,7 +85,7 @@ public class CartFragment extends Fragment {
         initViews(root);
         loadCart();
 
-        cartViewModel.getMutableLiveData().observe(this, cartItems -> {
+        cartViewModel.getMutableLiveData().observe(getViewLifecycleOwner(), cartItems -> {
             adapter = new CartAdapter(getContext(), cartItems);
             if (cartItems == null || cartItems.isEmpty()) {
                 rvCart.setVisibility(View.GONE);
