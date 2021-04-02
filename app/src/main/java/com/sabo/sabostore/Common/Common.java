@@ -23,8 +23,7 @@ public class Common {
     /**
      * BASE URL ExchangeRatesApi (Convert Currency)  -> latest?base=USD
      */
-    private static final String KEY = "651f5d0bb8c987122705903d8fb3d6c7";
-    private static final String URL = "http://api.exchangeratesapi.io/v1/latest?access_key="+KEY;
+    private static final String URL = "http://api.exchangeratesapi.io/v1/";
 
     /**
      * REQUEST PERMISSION CODE
@@ -113,8 +112,7 @@ public class Common {
         if (price != 0) {
             DecimalFormat df = new DecimalFormat("#,##0.00");
             df.setRoundingMode(RoundingMode.UP);
-            String finalPrice = new StringBuilder().append(df.format(price)).toString();
-            return finalPrice;
+            return new StringBuilder().append(df.format(price)).toString();
 
         } else
             return "0.00";
