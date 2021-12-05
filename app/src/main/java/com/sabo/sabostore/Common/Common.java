@@ -23,7 +23,7 @@ public class Common {
     /**
      * BASE URL ExchangeRatesApi (Convert Currency)  -> latest?base=USD
      */
-    private static final String URL = "http://api.exchangeratesapi.io/v1/";
+    private static final String URL = "https://api.exchangeratesapi.io/v1/";
 
     /**
      * REQUEST PERMISSION CODE

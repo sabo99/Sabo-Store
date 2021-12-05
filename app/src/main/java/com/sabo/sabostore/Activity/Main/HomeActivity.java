@@ -239,6 +239,8 @@ public class HomeActivity extends AppCompatActivity {
 
                     Common.ratesIDR = rates.getIDR();
                 }
+
+                Common.ratesIDR = 16040.92f;
             }
 
             @Override
