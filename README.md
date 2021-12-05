@@ -4,8 +4,6 @@
 
 Database menggunakan <a href="https://firebase.google.com">**`Firebase`**</a> dengan IDE <a href="https://developer.android.com/studio">**`Android Studio`**</a> dan bahasa pemrogramman Java 
 
-Proses **BackEnd** dari **Restful-API** menggunakan _**CodeIgniter4**_ 
-
 ### **Fitur Aplikasi E-Commerce Sabo Store** :
 
 - **Firebase**
