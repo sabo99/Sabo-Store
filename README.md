@@ -29,58 +29,58 @@ Proses **BackEnd** dari **Restful-API** menggunakan _**CodeIgniter4**_
 ### **`Splash Screen`**
 
 <img src="Screenshot_UI\1638682743526.jpg" height="475"/>
-<br><br>
+<br>
 
 ### **`Sign In Page`**
 
 <img src="Screenshot_UI\1638682743523.jpg" height="475"/>
-<br><br>
+<br>
 
 ### **`Sign Up Page`**
 
 <img src="Screenshot_UI\1638682305095.jpg" height="475"/>
-<br><br>
+<br>
 
 ### **`Home Page`**
 
 <img src="Screenshot_UI\1638682305093.jpg" height="475"/>
 <img src="Screenshot_UI\1638682305092.jpg" height="475"/>
-<br><br>
+<br>
 
 ### **`Navigation View`**
 
 <img src="Screenshot_UI\1638682305068.jpg" height="475"/>
 
-<br><br>
+<br>
 
 ### **`Sweet Alert Sign Out `**
 
 <img src="Screenshot_UI\1638682305043.jpg" height="475"/>
 
-<br><br>
+<br>
 
 ### **`Search Page`**
 
 <img src="Screenshot_UI\1638682305088.jpg" height="475"/>
 <img src="Screenshot_UI\1638682305090.jpg" height="475"/>
-<br><br>
+<br>
 
 
 ### **`Category Page`**
 
 <img src="Screenshot_UI\1638682305086.jpg" height="475"/>
-<br><br>
+<br>
 
 ### **`Detail Item Page`**
 
 <img src="Screenshot_UI\1638682305084.jpg" height="475"/>
-<br><br>
+<br>
 
 ### **`Cart Items Page`**
 
 <img src="Screenshot_UI\1638682305082.jpg" height="475"/>
 <img src="Screenshot_UI\1638682305080.jpg" height="475"/>
-<br><br>
+<br>
 
 ### **`Checkout Page`**
 
@@ -89,45 +89,45 @@ Proses **BackEnd** dari **Restful-API** menggunakan _**CodeIgniter4**_
 
 <img src="Screenshot_UI\1638682305074.jpg" height="475"/>
 <img src="Screenshot_UI\1638682305072.jpg" height="475"/>
-<br><br>
+<br>
 
 ### **`Order History Page`**
 
 <img src="Screenshot_UI\1638682305070.jpg" height="475"/>
 <img src="Screenshot_UI\1638689978310.jpg" height="475"/>
 <img src="Screenshot_UI\1638689978307.jpg" height="475"/>
-<br><br>
+<br>
 
 ### **`Detail Order History Page`**
 <img src="Screenshot_UI\1638689978313.jpg" height="475"/>
-<br><br>
+<br>
 
 ### **`Favorite Items Page`**
 <img src="Screenshot_UI\1638682305063.jpg" height="475"/>
-<br><br>
+<br>
 
 ### **`Account Page`**
 <img src="Screenshot_UI\1638682305065.jpg" height="475"/>
-<br><br>
+<br>
 
 ### **`Account Settings Page`**
 <img src="Screenshot_UI\1638682305061.jpg" height="475"/>
-<br><br>
+<br>
 
 ### **`Reset Password Page`**
 **`*Note`** <br>
 Untuk fitur ini masih dalam tahap **`Development`**
 <img src="Screenshot_UI\1638682305060.jpg" height="475"/>
-<br><br>
+<br>
 
 ### **`Change Email Page`**
 <img src="Screenshot_UI\1638682305058.jpg" height="475"/>
 <img src="Screenshot_UI\1638682305056.jpg" height="475"/>
-<br><br>
+<br>
 
 ### **`Delete Account Page`**
 <img src="Screenshot_UI\1638682305054.jpg" height="475"/>
-<br><br>
+<br>
 
 ### **`Profile Page`**
 <img src="Screenshot_UI\1638682305052.jpg" height="475"/>
@@ -151,4 +151,4 @@ Ketika ingin mengubah/update `phone number` akan muncul tampilan berikut
 Untuk fitur ini masih dalam tahap **`Development`**
 
 <img src="Screenshot_UI\1638682305046.jpg" height="475"/>
-<br><br>
+<br>
