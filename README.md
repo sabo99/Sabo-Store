@@ -26,7 +26,7 @@ Database menggunakan <a href="https://firebase.google.com">**`Firebase`**</a> de
 
 ### **`Preview App`**
 
-<img src="Screenshot_UI\Main.png" height="475" width="1400"/>
+<img src="Screenshot_UI\Main.png" height="475"/>
 <img src="Screenshot_UI\Preview-Main.png" height="475"/>
 
 ### **`Splash Screen`**
