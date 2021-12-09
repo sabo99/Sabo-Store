@@ -24,6 +24,11 @@ Database menggunakan <a href="https://firebase.google.com">**`Firebase`**</a> de
 
 ## Design UI App TodoList
 
+### **`Preview App`**
+
+<img src="Screenshot_UI\Main.png" height="475" width="1400"/>
+<img src="Screenshot_UI\Preview-Main.png" height="475"/>
+
 ### **`Splash Screen`**
 
 <img src="Screenshot_UI\1638682743526.jpg" height="475"/>
